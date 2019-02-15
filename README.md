@@ -1,1 +1,1 @@
-# HIghEd
+# HighEd
