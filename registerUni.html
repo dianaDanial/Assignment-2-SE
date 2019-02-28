@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Login</title>
+<title>Register University</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="logo.ico">
@@ -29,9 +29,9 @@
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact Us</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white"  style="float:right">Login</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Maintain Qualifications</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Record University</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
     </div>
 
     <!-- Navbar on small screens -->
@@ -46,32 +46,43 @@
     <div class="card"  "center" style="width:auto;" >
       <br>
       <br>
-        <img class="card-img-top mx-auto d-block" src="usericon.png" alt=" image icon of user" style="width:20%" >
-        <h1 class="text-center"> Login</h1>
-        <form>
+      <div class="form-group">
+        <img class="card-img-top mx-auto d-block" src="register.png" alt=" image icon of register" style="width:20%;" >
+        <br>
+        <h2 style="color:#000080 ;text-decoration: underline;">Record University</h2>
+        <form name="recordUni" id="recordUni">
           <div class="container mt-3">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Username</span>
-              </div>
-              <input type="text" class="form-control" placeholder=" Enter Username" id="usr" name="username">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">University</span>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Password</span>
-              </div>
-              <input type="password" class="form-control" placeholder="Enter Password" id="psw" name="password">
-            </div>
-          </form>
-          <div class="text-center">
-            <button type="submit" class="btn btn-success">Login</button>
-            <button type="button" class="btn btn-success">Cancel</button>
+            <input type="text" class="form-control" placeholder="Enter University Name" id="fname" name="fname" required>
           </div>
-          <br>
-        <div class="text-center">
-        <xlarge><P>Have you signed up ?</xlarge>
-          <a class="btn btn-link" href="SignUp.html" role="button">Sign Up for Applicant</a>
-        </div>
+          <h4 style="float:center; color:#000080;">Details of University Admin</h4>
+          <div class="table-responsive">
+            <table class="table table-striped" id="dynamic_field">
+              <tr>
+                <th>Username:</th>
+                <td><input type="text" name="username[]" placeholder="Enter Username" class="form-control Username_list" /></td>
+              </tr>
+              <tr>
+                <th>Password</th>
+                <td><input type="text" name="password[]" placeholder="Enter Password" class="form-control pswd_list" /></td>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <td><input type="text" name="name[]" placeholder="Enter Name" class="form-control name_list" /></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><input type="text" name="email[]" placeholder="Enter Email" class="form-control email_list" /></td>
+                <td><button type="button" name="add" id="add" class="btn btn-info">Add</button></td>
+              </tr>
+            </table>
+            <br>
+            <input type="button" name="submit" id="submit" class="btn btn-danger btn-lg" value="Submit" />
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -100,6 +111,28 @@
     }
   }
   </script>
+  <script>
+  $(document).ready(function(){
+    var i=1;
+    $('#add').click(function(){
+      i++;
+      $('#dynamic_field').append('<tr><th>Username:</th><td><input type="text" name="username[]" placeholder="Enter Username" class="form-control Username_list" /></td></tr><tr><th>Password</th><td><input type="text" name="password[]" placeholder="Enter Password" class="form-control pswd_list" /></td></tr><tr><th>Name</th><td><input type="text" name="name[]" placeholder="Enter Name" class="form-control name_list" /></td></tr><tr><th>Email</th><td><input type="text" name="email[]"placeholder="Enter Email" class="form-control email_list" /></td></tr>');
+    });
 
+    $('#submit').click(function(){
+      $.ajax({
+        url:"name.php",
+        method:"POST",
+        data:$('#add_name').serialize(),
+        success:function(data)
+        {
+          alert(data);
+          $('#add_name')[0].reset();
+        }
+      });
+    });
+
+  });
+  </script>
   </body>
   </html>
