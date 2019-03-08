@@ -100,16 +100,17 @@ CREATE TABLE `qualification` (
   `minimumScore` int(10) NOT NULL,
   `maximumScore` int(10) NOT NULL,
   `resultCalcDescription` varchar(100) NOT NULL,
-  `gradeList` varchar(100) NOT NULL
+  `gradeList` varchar(100) NOT NULL,
+  `SASadmin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualification`
 --
 
-INSERT INTO `qualification` (`qualificationID`,`qualificationName`, `minimumScore`, `maximumScore`, `resultCalcDescription`,`gradeList`) VALUES
-(101, 'A-Levels', 0.0, 5.0, 'Average of best 3 Subjects','A - 5 points, B- 4 points, C - 3 points, D - 2 points, A - 1 points'),
-(102, 'STPM', 0.0, 4.0, 'Average of best 3 Subjects','A (4.00), A- (3.67), B+ (3.33), B (3.00), B- (2.67), C+ (2.33), C (2.00), C- (1.67), D+ (1.33), D (1.00), F (0.00)');
+INSERT INTO `qualification` (`qualificationID`,`qualificationName`, `minimumScore`, `maximumScore`, `resultCalcDescription`,`gradeList`,`SASadmin`) VALUES
+(101, 'A-Levels', 0.0, 5.0, 'Average of best 3 Subjects','A - 5 points, B- 4 points, C - 3 points, D - 2 points, A - 1 points','paul'),
+(102, 'STPM', 0.0, 4.0, 'Average of best 3 Subjects','A (4.00), A- (3.67), B+ (3.33), B (3.00), B- (2.67), C+ (2.33), C (2.00), C- (1.67), D+ (1.33), D (1.00), F (0.00)','paul');
 
 -- --------------------------------------------------------
 
@@ -231,7 +232,9 @@ ALTER TABLE `applicant`
 -- Indexes for table `qualification`
 --
 ALTER TABLE `qualification`
-  ADD PRIMARY KEY (`qualificationID`);
+  ADD PRIMARY KEY (`qualificationID`),
+  ADD UNIQUE KEY `qualificationID` (`qualificationID`),
+  ADD KEY `SASadmin` (`SASadmin`);
 
 --
 -- Indexes for table `university`
@@ -286,6 +289,11 @@ ALTER TABLE `programme`
 --
 
 --
+-- Constraints for table `qualification`
+--
+ALTER TABLE `qualification`
+  ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`SASadmin`) REFERENCES `SASadmin` (`username`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
