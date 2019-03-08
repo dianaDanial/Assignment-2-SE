@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `highEd`
 --
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SASadmin`
+--
+
+CREATE TABLE `SASadmin` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `UniAdmin'
+--
+
+INSERT INTO `SASadmin` (`username`, `password`, `name`, `email`) VALUES
+('teresa', '12345', 'Teresa Miller','teresa@gmail.com' ),
+('paul', '12345', 'Paul Frank', 'paul@gmail');
 
 -- --------------------------------------------------------
 
@@ -190,6 +210,13 @@ INSERT INTO `result` (`subjectName`,`grade`,`score`) VALUES
 -- Indexes for table `uniAdmin`
 --
 ALTER TABLE `uniAdmin`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `applicant`
+--
+ALTER TABLE `SASadmin`
   ADD PRIMARY KEY (`username`),
   ADD UNIQUE KEY `username` (`username`);
 
