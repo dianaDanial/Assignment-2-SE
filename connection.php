@@ -9,6 +9,11 @@ $mobileNo = "";
 $IDtype = "";
 $IDnumber = "";
 $dateOfBirth = "";
+$qualificationName ="";
+$minimumScore = "";
+$maximumScore = "";
+$gradeList = "";
+$resultCalcDescription = "";
 $errors = array();
 
 // connect to the database
@@ -63,7 +68,7 @@ if (isset($_POST['reg_uniAdmin'])) {
 if (isset($_POST['reg_SASadmin'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $fullname = mysqli_real_escape_string($db, $_POST['name']);
+  $name = mysqli_real_escape_string($db, $_POST['name']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password']);
   $password_2 = mysqli_real_escape_string($db, $_POST['Confirmpassword']);
@@ -242,4 +247,16 @@ if (isset($_POST['login_SASadmin'])) {
   }
 }
 
+if (isset($_POST['add_qualification'])){
+  $qualificationName = mysqli_real_escape_string($db, $_POST['qualificationName']);
+  $minimumScore = mysqli_real_escape_string($db, $_POST['minimumScore']);
+  $maximumScore = mysqli_real_escape_string($db, $_POST['maximumScore']);
+  $gradeList = mysqli_real_escape_string($db, $_POST['gradeList']);
+  $resultCalcDescription = mysqli_real_escape_string($db, $_POST['resultCalcDescription']);
+  $sasAdmin = mysqli_real_escape_string($db, $_SESSION['username']);
+  $query =  "INSERT INTO qualification (qualificationName, minimumScore, maximumScore, gradeList,resultCalcDescription, SASadmin)
+        VALUES('$qualificationName', '$minimumScore', '$maximumScore', '$gradeList', '$resultCalcDescription', '$sasAdmin')";
+  mysqli_query($db, $query);
+  header('location: maintainQualifications.php');
+}
 ?>
