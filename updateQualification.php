@@ -1,30 +1,23 @@
 <?php
-include('connection.php');
+include("connection.php");
+
 $qualificationName ="";
-$minimumScore = "";
 $maximumScore = "";
-$gradeList = "";
-$resultCalcDescription = "";
+
 
 if (isset($_POST['update_page'])){
-  $qualificationName = mysqli_real_escape_string($db, $_POST['qualificationName']);
-  $minimumScore = mysqli_real_escape_string($db, $_POST['minimumScore']);
-  $maximumScore = mysqli_real_escape_string($db, $_POST['maximumScore']);
-  $gradeList = mysqli_real_escape_string($db, $_POST['gradeList']);
-  $resultCalcDescription = mysqli_real_escape_string($db, $_POST['resultCalcDescription']);
-  $sasAdmin = mysqli_real_escape_string($db, $_SESSION['username']);
+  $qualificationID = mysqli_real_escape_string($db, $_POST['qualificationID']);
 
-  $sql_select_qualification = "SELECT qualificationName, minimumScore, maximumScore, gradeList, resultCalcDescription FROM qualification WHERE qualificationID = '$qualificationID'";
+  $sql_select_qualification = "SELECT qualificationName, maximumScore FROM qualification WHERE qualificationID = '$qualificationID'";
   $result = mysqli_query($db, $sql_select_qualification);
   $user = mysqli_fetch_assoc($result);
   $qualificationName = $user['qualificationName'];
-  $minimumScore = $user['minimumScore'];
   $maximumScore = $user['maximumScore'];
-  $gradeList = $user['gradeList'];
-  $resultCalcDescription = $user['resultCalcDescription'];
+
 }
 
 if (isset($_POST['update_qualification'])){
+  $qualificationID = mysqli_real_escape_string($db, $_POST['qualificationID']);
   $qualificationName = mysqli_real_escape_string($db, $_POST['qualificationName']);
   $minimumScore = mysqli_real_escape_string($db, $_POST['minimumScore']);
   $maximumScore = mysqli_real_escape_string($db, $_POST['maximumScore']);
@@ -36,10 +29,11 @@ if (isset($_POST['update_qualification'])){
 
   header('location: maintainQualifications.php');
 }
+//$sql = "UPDATE qualification SET WHERE qualificationID = $qualificationID";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<title>Add Qualifications</title>
+<title>Update Qualifications</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="logo.ico">
@@ -66,10 +60,10 @@ if (isset($_POST['update_qualification'])){
       <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Maintain Qualifications</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register University</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
+      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Maintain Qualifications</a>
+      <a href="registerUni.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register University</a>
+      <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
     </div>
 
     <!-- Navbar on small screens -->
@@ -88,37 +82,44 @@ if (isset($_POST['update_qualification'])){
       <br>
       <h1 style="text-decoration: underline;">Edit Qualification</h1>
       <br>
+      <form action = "updateQualification.php" method="post">
+        <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">QualificationID: </span>
+        </div>
+        <input readonly class="form-control" id = "qualificationID" name = "qualificationID" value = "<?php echo $qualificationID;?>">
+      </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Qualification Name: </span>
         </div>
-        <input type="text" class="form-control" placeholder=" Enter Name" id = "qualiName" name = "qualiName" value="<?php echo $qualificationName;?>">
+        <input type="text" class="form-control" placeholder=" Enter Name" id = "qualificationName" name = "qualificationName" value="<?php echo $qualificationName;?>">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Minimum Score: </span>
         </div>
-        <input type="text" class="form-control" placeholder="0 - 100" id = "minScore" name = "minScore" value="<?php echo $minimumScore;?>">
+        <input type="text" class="form-control" placeholder="0 - 100" id = "minimumScore" name = "minimumScore" value="<?php echo $minimumScore;?>">
         <div class="input-group-prepend">
           <span class="input-group-text">Maximum Score: </span>
         </div>
-        <input type="text" class="form-control" placeholder="0 - 100" id = "maxScore" name = "maxScore" value="<?php echo $maximumScore;?>">
+        <input type="text" class="form-control" placeholder="0 - 100" id = "maximumScore" name = "maximumScore" value="<?php echo $maximumScore;?>">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">List of Possible Grades: </span>
         </div>
-        <input type="text" class="form-control" placeholder="Input Grade" id = "possibleGrade" name = "possibleGrade" value="<?php echo $gradeList;?>">
+        <textarea class="form-control" placeholder="Input Grade" id = "gradeList" name = "gradeList" value="<?php echo $gradeList;?>"></textarea>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Description of calculated result: </span>
         </div>
-      <textarea class="form-control"  placeholder="Enter the description" id="comments" value="<?php echo $resultCalcDescription;?>"></textarea>
+      <textarea class="form-control"  placeholder="Enter the description" id="resultCalcDescription"name = "resultCalcDescription" value="<?php echo $resultCalcDescription;?>"></textarea>
       </div>
       <br>
-      <button type="submit" class="btn btn-success btn-lg btn-block" name="update_qualification">Submit</button>
-    </div>
+      <button type="submit" class="btn btn-success btn-lg btn-block" name="update_qualification">Save</button>
+    </form>
   </div>
 </div>
 </div>
