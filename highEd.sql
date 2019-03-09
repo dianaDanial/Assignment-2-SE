@@ -100,7 +100,7 @@ CREATE TABLE `qualification` (
   `minimumScore` int(10) NOT NULL,
   `maximumScore` int(10) NOT NULL,
   `resultCalcDescription` varchar(100) NOT NULL,
-  `gradeList` varchar(100) NOT NULL,
+  `gradeList` varchar(300) NOT NULL,
   `SASadmin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -140,7 +140,7 @@ INSERT INTO `university` (`universityID`, `universitName`) VALUES
 CREATE TABLE `programme` (
   `programmeID`int(20) NOT NULL,
   `programmeName` varchar(100) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `description` varchar(200) NOT NULL,
   `closingDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
