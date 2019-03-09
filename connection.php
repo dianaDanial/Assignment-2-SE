@@ -14,6 +14,7 @@ $minimumScore = "";
 $maximumScore = "";
 $gradeList = "";
 $resultCalcDescription = "";
+$universityName = "";
 $errors = array();
 
 // connect to the database
@@ -258,5 +259,13 @@ if (isset($_POST['add_qualification'])){
         VALUES('$qualificationName', '$minimumScore', '$maximumScore', '$gradeList', '$resultCalcDescription', '$sasAdmin')";
   mysqli_query($db, $query);
   header('location: maintainQualifications.php');
+}
+
+if (isset($_POST['register_Uni'])){
+  $universityName = mysqli_real_escape_string($db, $_POST['universityName']);
+  $query =  "INSERT INTO university(universitName)
+        VALUES('$universityName')";
+  mysqli_query($db, $query);
+  header('location: registerUniAdmin.php');
 }
 ?>
