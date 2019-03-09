@@ -4,7 +4,7 @@ include("connection.php");
 
 $username = $_SESSION['username'];
 
-$sql_select_qualification = "SELECT qualificationName, maximumScore FROM qualification WHERE  = '$username'";
+$sql_select_qualification = "SELECT qualificationName, maximumScore, qualificationID FROM qualification WHERE SASadmin = '$username'";
 if ($result_select_qualification = mysqli_query($db, $sql_select_qualification)) {
 	$row_count_select_qualification =mysqli_num_rows($result_select_qualification);
 	if ($row_count_select_qualification>0) {
@@ -50,17 +50,17 @@ if ($result_select_qualification = mysqli_query($db, $sql_select_qualification))
       <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Maintain Qualifications</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register University</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
+      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-padding-large w3-white">Maintain Qualifications</a>
+      <a href="registerUni.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register University</a>
+      <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
     </div>
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Record University</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Log Out</a>
+      <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="registerUni.php" class="w3-bar-item w3-button w3-padding-large">Register University</a>
+      <a href="logOut.php" class="w3-bar-item w3-button w3-padding-large">Log Out</a>
     </div>
   </div>
   <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
@@ -86,14 +86,13 @@ if ($result_select_qualification = mysqli_query($db, $sql_select_qualification))
             for ($i = 1; $i <=$row_count_select_qualification; $i++) {
               echo "
                 <tr>
-                <form action='addQualification.php' method='post'>
+                <form action='updateQualification.php' method='post'>
                   <td>$qualificationName_selected_qualification[$i]</td>
                   <td>$maximumScore_selected_qualification[$i]</td>
                   <td>
-                  <input class='invisible' name='qualificationID' value='$qualificationID_selected_qualification[$i]'>
-                        <a href='addQualification.html' type='button' name='update_page' class='btn btn-success'>Edit</a>
+									<input class='invisible' name='qualificationID' value='$qualificationID_selected_qualification[$i]'>
+									<button type='submit' class='btn btn-success' name='update_page'>Edit</button>
                     </form>
-
                   </td>
                 </tr>
               ";
@@ -128,7 +127,7 @@ if ($result_select_qualification = mysqli_query($db, $sql_select_qualification))
       </table>
     -->
       <br>
-      <a href="addQualification.html" class="btn btn-warning btn-lg btn-block" name="add_qualification">Add Qualification</a>
+      <a href="addQualification.php" class="btn btn-warning btn-lg btn-block" type="button">Add Qualification</a>
     </div>
   </div>
 </div>
