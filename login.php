@@ -28,19 +28,19 @@
       <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact Us</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white"  style="float:right">Login</a>
+      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="programmes.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
+      <a href="signUpSASadmin.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
+      <a href="contactUs.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact Us</a>
+      <a href="login.php" class="w3-bar-item w3-button w3-padding-large w3-white"  style="float:right">Login</a>
     </div>
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Programmes</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Sign Up</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
+      <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="programmes.php" class="w3-bar-item w3-button w3-padding-large">Programmes</a>
+      <a href="signUpSASadmin.php" class="w3-bar-item w3-button w3-padding-large">Sign Up</a>
+      <a href="contactUs.php" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
     </div>
   </div>
   <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
@@ -77,6 +77,7 @@
         <div class="text-center">
         <xlarge><P>Have you signed up ?</xlarge>
           <a class="btn btn-link" href="SignUp.html" role="button">Sign Up for Applicant</a>
+          <a class="btn btn-link" href="signUpSASadmin.php" role="button">Sign Up for SASadmin</a>
         </div>
       </div>
     </div>
