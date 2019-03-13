@@ -40,6 +40,7 @@ CREATE TABLE `SASadmin` (
 
 INSERT INTO `SASadmin` (`username`, `password`, `name`, `email`) VALUES
 ('teresa', '12345', 'Teresa Miller','teresa@gmail.com' ),
+('ariana', 'ariana', 'Ariana Grande','ariana@gmail.com' ),
 ('paul', '12345', 'Paul Frank', 'paul@gmail');
 
 -- --------------------------------------------------------
@@ -141,7 +142,8 @@ CREATE TABLE `programme` (
   `programmeID`int(20) NOT NULL,
   `programmeName` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `closingDate` date NOT NULL
+  `closingDate` date NOT NULL,
+  `uniAdmin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -248,6 +250,7 @@ ALTER TABLE `university`
 ALTER TABLE `programme`
   ADD PRIMARY KEY (`programmeID`),
   ADD UNIQUE KEY `programmeID` (`programmeID`);
+  ADD KEY `uniAdmin` (`uniAdmin`);
 
 --
 -- Indexes for table `application`
@@ -293,6 +296,12 @@ ALTER TABLE `programme`
 --
 ALTER TABLE `qualification`
   ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`SASadmin`) REFERENCES `SASadmin` (`username`);
+
+  --
+  -- Constraints for table `programme`
+  --
+  ALTER TABLE `programme`
+    ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
 
 COMMIT;
 
