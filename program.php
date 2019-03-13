@@ -3,7 +3,7 @@ include ('connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<title>Maintain Qualifications</title>
+<title>Record Programme</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="logo.ico">
@@ -31,15 +31,16 @@ include ('connection.php');
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
       <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-padding-large w3-white">Maintain Qualifications</a>
-      <a href="registerUni.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register University</a>
+      <a href="home2.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Maintain University Programme</a>
+      <a href="review.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Review Application</a>
       <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
     </div>
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
       <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="registerUni.php" class="w3-bar-item w3-button w3-padding-large">Register University</a>
+      <a href="home2.php" class="w3-bar-item w3-button w3-padding-large">Maintain University Programme</a>
+      <a href="review.php" class="w3-bar-item w3-button w3-padding-large">Review Application</a>
       <a href="logOut.php" class="w3-bar-item w3-button w3-padding-large">Log Out</a>
     </div>
   </div>
