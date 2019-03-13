@@ -77,7 +77,6 @@
         <div class="text-center">
         <xlarge><P>Have you signed up ?</xlarge>
           <a class="btn btn-link" href="SignUp.html" role="button">Sign Up for Applicant</a>
-          <a class="btn btn-link" href="signUpSASadmin.php" role="button">Sign Up for SASadmin</a>
         </div>
       </div>
     </div>
