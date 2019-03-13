@@ -4,7 +4,7 @@ include("connection.php");
 
 $username = $_SESSION['username'];
 
-$sql_select_programme = "SELECT programmeName, closingDate, description FROM programme WHERE SASadmin = '$username'";
+$sql_select_programme = "SELECT programmeName, closingDate, description FROM programme WHERE uniAdmin = '$username'";
 if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
 	$row_count_select_programme =mysqli_num_rows($result_select_programme);
 	if ($row_count_select_programme>0) {
@@ -17,7 +17,7 @@ if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
 		}
 	}
 } else{
-	$row_count_select_qualification = 0;
+	$row_count_select_programme = 0;
 }
 
 ?>
@@ -65,13 +65,14 @@ if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
   </div>
   <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
   <div class="w3-content">
+    <br>
     <div class= "w3-center"style="width:auto;">
       	<h2 style="color:blue;"><i class="fa fa-user-circle verybigtext lefty marginright10" style="color: #05C3F7;"></i> Welcome <?php echo $_SESSION['username']; ?></h2>
       <br>
       <br>
       <h1 style="text-decoration: underline;">Manage University Programme</h1>
       <br>
-      <?php if ($row_count_select_programme> 0) {
+        <?php if ($row_count_select_programme > 0) {
         echo "
         <table class='table table-striped'>
           <thead>
