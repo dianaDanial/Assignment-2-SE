@@ -67,6 +67,10 @@ if ($result_select_qualification = mysqli_query($db, $sql_select_qualification))
   <div class="w3-content">
     <div class= "w3-center"style="width:auto;">
       <br>
+			  <div class="w3-left w3-xlarge"
+				<h1 style="color:blue;"><i class="fa fa-user-circle verybigtext lefty marginright10" style="color: #05C3F7;"></i> Welcome <?php echo $_SESSION['username']; ?></h1>
+			</div>
+			<br>
       <br>
       <h1 style="text-decoration: underline;">List Of Qualifications</h1>
       <br>
