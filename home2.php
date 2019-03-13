@@ -1,58 +1,132 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'highed');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully<br>";
 
+include("connection.php");
+
+$username = $_SESSION['username'];
+
+$sql_select_programme = "SELECT programmeName, closingDate, description FROM programme WHERE SASadmin = '$username'";
+if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
+	$row_count_select_programme =mysqli_num_rows($result_select_programme);
+	if ($row_count_select_programme>0) {
+		$i = 1;
+		while($row_select_programme=mysqli_fetch_assoc($result_select_programme)) {
+			$programmeName_selected_programme[$i] = $row_select_programme['programmeName'];
+			$closingDate_selected_programme[$i] = $row_select_programme['closingDate'];
+      $description_selected_programme[$i] = $row_select_programme['description'];
+			$i++;
+		}
+	}
+} else{
+	$row_count_select_qualification = 0;
+}
 
 ?>
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Manage University Program</h1>
-        <a href="program.php">
-        <input type="submit" name="newP" value="New Program"><br>
-        </a>
-        
-        <?php
-        mysqli_select_db($conn,"program");
-        $sql="SELECT * FROM program ";
-        $result = mysqli_query($conn,$sql);
+<html lang="en">
+<title>Manage University Programme</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="logo.ico">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+  .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+  .fa-anchor,.fa-coffee {font-size:200px}
+  </style>
 
-        echo "<table>
-        <tr>
-        <th>Program Name</th>
-        <th>Start Date</th>
-        <th>End Date Score</th>
-        <th>Description</th>
-        <th>No Of Applicant</th>
-        </tr>";
-        while($row = mysqli_fetch_array($result)) {
-        echo '<tr style="width:20%">';
-            echo '<td style="width:20%">' . $row['name'] . "</td>";
-            echo '<td style="width:20%">' . $row['startdate'] . "</td>";
-            echo '<td style="width:20%">' . $row['enddate'] . "</td>";
-            echo '<td style="width:20%">' . $row['desc'] . "</td>";
-            echo '<td style="width:20%">' . $row['noofsubject'] . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        mysqli_close($conn);
-        ?>
-        
-        <?php
-        // put your code here
-        ?>
-    </body>
+  <!-- Navbar -->
+
+  <div class="w3-top">
+    <body class="bg-info" >
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <img src="logo.png" alt="Logo" style="width:50px; height:85px">
+      <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="home2.php" class="w3-bar-item w3-button w3-padding-large w3-white">Maintain University Programme</a>
+      <a href="review.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Review Application</a>
+      <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
+    </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="review.php" class="w3-bar-item w3-button w3-padding-large">Review Application</a>
+      <a href="logOut.php" class="w3-bar-item w3-button w3-padding-large">Log Out</a>
+    </div>
+  </div>
+  <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
+  <div class="w3-content">
+    <div class= "w3-center"style="width:auto;">
+      	<h2 style="color:blue;"><i class="fa fa-user-circle verybigtext lefty marginright10" style="color: #05C3F7;"></i> Welcome <?php echo $_SESSION['username']; ?></h2>
+      <br>
+      <br>
+      <h1 style="text-decoration: underline;">Manage University Programme</h1>
+      <br>
+      <?php if ($row_count_select_programme> 0) {
+        echo "
+        <table class='table table-striped'>
+          <thead>
+            <tr>
+              <th class='table-info'scope='col'>Programme Name</th>
+              <th class='table-info'scope='col'>Closing Date</th>
+              <th class='table-info'scope='col'>Description</th>
+            </tr>
+          </thead>
+          <tbody>";
+            for ($i = 1; $i <=$row_count_select_programme; $i++) {
+              echo "
+                <tr>
+                <form action='home2.php' method='post'>
+                  <td>$programmeName_selected_programme[$i]</td>
+                  <td>$closingDate_selected_programme[$i]</td>
+                  <td>$description_selected_programme[$i]</td>
+                  </form>
+                </tr>
+              ";
+            } echo "
+          </tbody>
+        </table>
+        ";
+      }
+      ?>
+      <br>
+      <a href="program.php" class="btn btn-warning btn-lg btn-block" type="button">New Programme</a>
+    </div>
+  </div>
+</div>
+</body>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+    <div class="w3-xlarge w3-padding-32">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+   </div>
+   <p style="color: white; font-size: 20px; ">Copyright by Sharifah & Khadijah</p>
+  </footer>
+
+  <script>
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+</script>
+</body>
 </html>
