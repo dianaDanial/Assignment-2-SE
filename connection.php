@@ -274,8 +274,9 @@ if (isset($_POST['publish'])){
   $name = mysqli_real_escape_string($db, $_POST['programmeName']);
   $description = mysqli_real_escape_string($db, $_POST['description']);
   $end = mysqli_real_escape_string($db, $_POST['end']);
-  $query =  "INSERT INTO programme(programmeName,description,closingDate)
-        VALUES('$name','$description','$end')";
+  $uniAdmin = mysqli_real_escape_string($db, $_SESSION['username']);
+  $query =  "INSERT INTO programme(programmeName,description,closingDate, uniAdmin)
+        VALUES('$name','$description','$end','$uniAdmin')";
   mysqli_query($db, $query);
   header('location: home2.php');
 
