@@ -15,6 +15,9 @@ $maximumScore = "";
 $gradeList = "";
 $resultCalcDescription = "";
 $universityName = "";
+$name ="";
+$description = "";
+$end = "";
 $errors = array();
 
 // connect to the database
@@ -267,5 +270,16 @@ if (isset($_POST['register_Uni'])){
         VALUES('$universityName')";
   mysqli_query($db, $query);
   header('location: registerUniAdmin.php');
+}
+
+if (isset($_POST['publish'])){
+  $name = mysqli_real_escape_string($db, $_POST['programmeName']);
+  $description = mysqli_real_escape_string($db, $_POST['description']);
+  $end = mysqli_real_escape_string($db, $_POST['end']);
+  $query =  "INSERT INTO programme(programmeName,description,closingDate)
+        VALUES('$name','$description','$end')";
+  mysqli_query($db, $query);
+  header('location: home2.php');
+
 }
 ?>
