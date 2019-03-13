@@ -150,9 +150,9 @@ CREATE TABLE `programme` (
 -- Dumping data for table `programme`
 --
 
-INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closingDate`) VALUES
-(001, 'Account', ' Accounting is an important part of businesses as it is a means of determining the financial stability of a business.','2019-02-16' ),
-(002, 'Business', ' Studying for a business management degree allows you to develop a broad understanding of business organisations.','2019-02-17' );
+INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closingDate`,`UniAdmin` ) VALUES
+(001, 'Account', ' Accounting is an important part of businesses as it is a means of determining the financial stability of a business.','2019-02-16','amber' ),
+(002, 'Business', ' Studying for a business management degree allows you to develop a broad understanding of business organisations.','2019-02-17','amber' );
 -- --------------------------------------------------------
 
 --
@@ -245,11 +245,11 @@ ALTER TABLE `university`
   ADD PRIMARY KEY (`universityID`);
 
 --
--- Indexes for table `service`
+-- Indexes for table `programme`
 --
 ALTER TABLE `programme`
   ADD PRIMARY KEY (`programmeID`),
-  ADD UNIQUE KEY `programmeID` (`programmeID`);
+  ADD UNIQUE KEY `programmeID` (`programmeID`),
   ADD KEY `uniAdmin` (`uniAdmin`);
 
 --
@@ -301,7 +301,7 @@ ALTER TABLE `qualification`
   -- Constraints for table `programme`
   --
   ALTER TABLE `programme`
-    ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
+    ADD CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
 
 COMMIT;
 
