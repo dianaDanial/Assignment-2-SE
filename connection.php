@@ -168,7 +168,7 @@ if (isset($_POST['reg_applicant'])) {
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: applyingProgramme.php');
+  	header('location: home3.php');
   }
 }
 
@@ -192,7 +192,7 @@ if (isset($_POST['login_applicant'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: applyingProgramme.php');
+  	  header('location: home3.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
