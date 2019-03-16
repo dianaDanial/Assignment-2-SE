@@ -4,8 +4,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully<br>";
-
-
+//this is to test 
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +17,14 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>HighEd</title>
-        
+
     </head>
     <body>
         <h1>Manage Qualifications</h1>
         <a href="qualification.php">
         <input type="submit" name="newQ" value="New Qualification"><br>
         </a>
-        
+
         <?php
         mysqli_select_db($conn,"qualification");
         $sql="SELECT * FROM qualification ";
@@ -50,13 +49,13 @@ and open the template in the editor.
         }
         echo "</table>";
         ?>
-        
-        
+
+
         <h1>Manage Universities and Admins</h1>
         <a href="university.php">
         <input type="submit" name="newU" value="New University/Admin"><br><br>
         </a>
-        
+
         <?php
         mysqli_select_db($conn,"university");
         $sql="SELECT * FROM university ";
