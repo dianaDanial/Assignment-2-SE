@@ -49,7 +49,6 @@ and open the template in the editor.
             echo "</tr>";
         }
         echo "</table>";
-        //mysqli_close($conn);
         ?>
         
         
