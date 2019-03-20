@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 13, 2019 at 02:55 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.40
+-- Host: 127.0.0.1
+-- Generation Time: March 1, 2019 at 02:08 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,72 +19,75 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `highed`
+-- Database: `highEd`
 --
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SASadmin`
+--
+
+CREATE TABLE `SASadmin` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `UniAdmin'
+--
+
+INSERT INTO `SASadmin` (`username`, `password`, `name`, `email`) VALUES
+('teresa', '12345', 'Teresa Miller','teresa@gmail.com' ),
+('ariana', 'ariana', 'Ariana Grande','ariana@gmail.com' ),
+('paul', '12345', 'Paul Frank', 'paul@gmail');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `UniAdmin`
 --
 
-CREATE TABLE `admin` (
-  `idadmin` int(11) NOT NULL,
-  `iduser` int(11) DEFAULT NULL
+CREATE TABLE `uniAdmin` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `UniAdmin'
+--
+
+INSERT INTO `uniAdmin` (`username`, `password`, `name`, `email`) VALUES
+('amber', '12345', 'Amber Gold','amber@gmail.com' ),
+('ben', 'ben', 'Benjamin Gardner', 'ben@gmail');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `application`
+-- Table structure for table `applicant`
 --
 
-CREATE TABLE `application` (
-  `idapplication` int(11) NOT NULL,
-  `iduser` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  `idprogram` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login`
---
-
-CREATE TABLE `login` (
-  `idlogin` int(11) NOT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `usertype` int(11) DEFAULT NULL,
-  `iduser` int(11) DEFAULT NULL
+CREATE TABLE `applicant` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `IDtype` varchar(30) NOT NULL,
+  `IDnumber` int(20) NOT NULL,
+  `mobileNo` varchar(50) NOT NULL,
+  `dateOfBirth`date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `applicant`
 --
 
-INSERT INTO `login` (`idlogin`, `username`, `email`, `password`, `usertype`, `iduser`) VALUES
-(1, 'khadijah', 'kha89@live.com', 'asdf1234', 1, NULL),
-(2, 'diana', 'diana@gmail.com', 'asdf1234', 2, NULL),
-(3, 'latipah', 'latipah@gmail.com', 'asdf1234', 3, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `program`
---
-
-CREATE TABLE `program` (
-  `idprogram` int(11) NOT NULL,
-  `iduniversity` int(11) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `startdate` datetime DEFAULT NULL,
-  `enddate` datetime DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `applicant` (`username`, `password`, `name`, `email`, `IDtype`, `IDnumber`,`mobileNo`,`dateOfBirth`) VALUES
+('blair', 'blair', 'Blair Waldorf', 'blair@gmail.com', 'passport',311195851, '01912651188','1999-02-12'),
+('adam', 'adam', 'Ahmad Adam', 'adam@gmail.com', 'IC',981117081561, '0123334861','1998-11-17');
 
 -- --------------------------------------------------------
 
@@ -93,33 +96,22 @@ CREATE TABLE `program` (
 --
 
 CREATE TABLE `qualification` (
-  `idqualification` int(11) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `minscore` decimal(5,2) DEFAULT NULL,
-  `maxscore` decimal(5,2) DEFAULT NULL,
-  `desc` varchar(45) DEFAULT NULL,
-  `noofsubject` int(11) DEFAULT NULL
+  `qualificationID` int(20) NOT NULL,
+  `qualificationName` varchar(50) NOT NULL,
+  `minimumScore` int(10) NOT NULL,
+  `maximumScore` int(10) NOT NULL,
+  `resultCalcDescription` varchar(100) NOT NULL,
+  `gradeList` varchar(300) NOT NULL,
+  `SASadmin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualification`
 --
 
-INSERT INTO `qualification` (`idqualification`, `name`, `minscore`, `maxscore`, `desc`, `noofsubject`) VALUES
-(1, 'STPM', '0.00', '4.00', 'Average', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `studentscore`
---
-
-CREATE TABLE `studentscore` (
-  `idstudentscore` int(11) NOT NULL,
-  `iduser` int(11) DEFAULT NULL,
-  `idqualification` int(11) DEFAULT NULL,
-  `score` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `qualification` (`qualificationID`,`qualificationName`, `minimumScore`, `maximumScore`, `resultCalcDescription`,`gradeList`,`SASadmin`) VALUES
+(101, 'A-Levels', 0.0, 5.0, 'Average of best 3 Subjects','A - 5 points, B- 4 points, C - 3 points, D - 2 points, A - 1 points','paul'),
+(102, 'STPM', 0.0, 4.0, 'Average of best 3 Subjects','A (4.00), A- (3.67), B+ (3.33), B (3.00), B- (2.67), C+ (2.33), C (2.00), C- (1.67), D+ (1.33), D (1.00), F (0.00)','paul');
 
 -- --------------------------------------------------------
 
@@ -128,139 +120,189 @@ CREATE TABLE `studentscore` (
 --
 
 CREATE TABLE `university` (
-  `iduniversity` int(11) NOT NULL,
-  `iduser` int(11) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL
+  `universityID` int(20) NOT NULL,
+  `universitName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `university`
+--
+
+INSERT INTO `university` (`universityID`, `universitName`) VALUES
+(1,'University of Malaya'),
+(2,'University of Victoria');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `programme`
 --
 
-CREATE TABLE `user` (
-  `iduser` int(11) NOT NULL,
-  `usertype` varchar(45) DEFAULT NULL,
-  `fullname` varchar(45) DEFAULT NULL,
-  `idtype` varchar(45) DEFAULT NULL,
-  `idnumber` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL
+CREATE TABLE `programme` (
+  `programmeID`int(20) NOT NULL,
+  `programmeName` varchar(100) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `closingDate` date NOT NULL,
+  `uniAdmin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `programme`
 --
 
-INSERT INTO `user` (`iduser`, `usertype`, `fullname`, `idtype`, `idnumber`, `email`) VALUES
-(1, 'SASAdmin', 'Khadijah Roslan', 'MyKad', '123456', 'kha89@live.com'),
-(2, 'UniAdmin', 'SharifahDiana', 'MyKad', '123456', 'diana@gmail.com'),
-(3, 'Applicant', 'Latipah Harun', 'MyKad', '123456', 'latipah@gmail.com');
+INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closingDate`,`UniAdmin` ) VALUES
+(001, 'Account', ' Accounting is an important part of businesses as it is a means of determining the financial stability of a business.','2019-02-16','amber' ),
+(002, 'Business', ' Studying for a business management degree allows you to develop a broad understanding of business organisations.','2019-02-17','amber' );
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Table structure for table `application`
 --
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`idadmin`);
+CREATE TABLE `application` (
+  `applicationID` int(20) NOT NULL,
+  `applicationDate` date NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for table `application`
+-- Dumping data for table `application`
 --
-ALTER TABLE `application`
-  ADD PRIMARY KEY (`idapplication`);
+
+INSERT INTO `application` (`applicationID`, `applicationDate`,`status`) VALUES
+(1001,'2019-01-08','Pending'),
+(1002,'2019-01-10','Pending');
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `qualificationObtained`
+--
+
+CREATE TABLE `qualificationObtained` (
+  `overallScore` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for table `login`
+-- Dumping data for table `qualificationObtained`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`idlogin`);
+
+INSERT INTO `qualificationObtained` (`overallScore`) VALUES
+(4.5),
+(3.67);
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `result`
+--
+
+CREATE TABLE `result` (
+  `subjectName`varchar(50) NOT NULL,
+  `grade` varchar(20) NOT NULL,
+  `score`int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for table `program`
+-- Dumping data for table `result`
 --
-ALTER TABLE `program`
-  ADD PRIMARY KEY (`idprogram`);
+
+INSERT INTO `result` (`subjectName`,`grade`,`score`) VALUES
+('Chemistry', 'B+', 76.5);
+
+-- --------------------------------------------------------
+--
+-- Indexes for table `uniAdmin`
+--
+ALTER TABLE `uniAdmin`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `applicant`
+--
+ALTER TABLE `SASadmin`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `applicant`
+--
+ALTER TABLE `applicant`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `qualification`
 --
 ALTER TABLE `qualification`
-  ADD PRIMARY KEY (`idqualification`);
-
---
--- Indexes for table `studentscore`
---
-ALTER TABLE `studentscore`
-  ADD PRIMARY KEY (`idstudentscore`);
+  ADD PRIMARY KEY (`qualificationID`),
+  ADD UNIQUE KEY `qualificationID` (`qualificationID`),
+  ADD KEY `SASadmin` (`SASadmin`);
 
 --
 -- Indexes for table `university`
 --
 ALTER TABLE `university`
-  ADD PRIMARY KEY (`iduniversity`);
+  ADD PRIMARY KEY (`universityID`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `programme`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`iduser`);
+ALTER TABLE `programme`
+  ADD PRIMARY KEY (`programmeID`),
+  ADD UNIQUE KEY `programmeID` (`programmeID`),
+  ADD KEY `uniAdmin` (`uniAdmin`);
+
+--
+-- Indexes for table `application`
+--
+ALTER TABLE `application`
+  ADD PRIMARY KEY (`applicationID`),
+  ADD UNIQUE KEY `applicationID` (`applicationID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `qualification`
 --
-ALTER TABLE `admin`
-  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `qualification`
+  MODIFY `qualificationID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `idapplication` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `login`
---
-ALTER TABLE `login`
-  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `program`
---
-ALTER TABLE `program`
-  MODIFY `idprogram` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `qualification`
---
-ALTER TABLE `qualification`
-  MODIFY `idqualification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `studentscore`
---
-ALTER TABLE `studentscore`
-  MODIFY `idstudentscore` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `applicationID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- AUTO_INCREMENT for table `university`
 --
 ALTER TABLE `university`
-  MODIFY `iduniversity` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `universityID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `programme`
 --
-ALTER TABLE `user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `programme`
+  MODIFY `programmeID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=001;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `qualification`
+--
+ALTER TABLE `qualification`
+  ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`SASadmin`) REFERENCES `SASadmin` (`username`);
+
+  --
+  -- Constraints for table `programme`
+  --
+  ALTER TABLE `programme`
+    ADD CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
