@@ -4,101 +4,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="logo.ico">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
     <style>
-        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-        .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-        .fa-anchor,.fa-coffee {font-size:200px}
+        body {font-family: "Arial", sans-serif}
+        .mySlides {display: none}
     </style>
     <body>
 
         <!-- Navbar -->
-
         <div class="w3-top">
-            <body class="bg-info" >
 
+            <div class="w3-bar w3-black w3-card">
 
-                <nav class="navbar navbar-expand-md bg-light navbar-light">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+                <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT</a>
+                <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROGRAMMES</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+                <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Login</a>
+                <div class="w3-dropdown-hover w3-hide-small">
 
-                    <img src="logo.png" alt="Logo" style="width:65px; height:85px">
-                    <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
-
-                    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-                        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-                        <a href="index.php" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-                        <a href="programmes.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
-                        <a href="user.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sign Up</a>
-                        <a href="contactUs.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact Us</a>
-                        <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Login</a>
-                    </div>
-
-                    <!-- Navbar on small screens -->
-                    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-                        <a href="programmes.php" class="w3-bar-item w3-button w3-padding-large">Programmes</a>
-                        <a href="user.php" class="w3-bar-item w3-button w3-padding-large">Sign Up</a>
-                        <a href="contactUs.php" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
-                        <a href="login.php" class="w3-bar-item w3-button w3-padding-large">Login</a>
-                    </div>
-        </div>
-
-        <!-- Header -->
-        <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="graduate.png" alt="graduate" width="100%" height="850">
-                    <div class="carousel-caption">
-                        <h1 class="w3-margin w3-jumbo" style="color: black;"><strong>FIND THE RIGHT COURSES & UNIVERSITY</strong></h1>
-                        <p class="w3-xlarge" style="color:black ;text-shadow: 2px 2px white">No.1 Higher Education Website</p>
-                        <button class="w3-button w3-red w3-padding-large w3-large w3-margin-top">Available Programmes</button>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Second Grid -->
-        <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-            <div class="w3-content">
-                <div class="w3-third w3-center">
-                    <img src="uniLogo.png" alt="Icon of university" style="width:100%">
-                </div>
-                <div class="w3-twothird">
-                    <h1>One Application. 200+ Institutions</h1>
-                    <h5 class="w3-padding-20">- Explore top-ranking universities catered to your needs, in one place.</h5>
-                    <h5 class="w3-padding-20">- Key in details ONCE to apply to multiple institutions.</h5>
-                    <h5 class="w3-padding-20">- Sift through numerous offers and find the best one for you & your future!</h5>
                 </div>
             </div>
         </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+            <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ABOUT</a>
+            <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">PROGRAMMES</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+        </div>
+
+        <!-- Page content -->
+        <div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+            <!-- Automatic Slideshow Images -->
+
+            <div class="w3-display-container w3-center">
+
+                <img src="graduate.png" style="width:100%;height:700px">
+                <div class="w3-text-black w3-hide-small w3-display-middle " style='font-size:150px; font-family: "Amatic SC", sans-serif;'>
+
+                    <strong>HighEd</strong><br>
+                    <img src="logo.png" alt="Logo" style="width:205px; height:225px"><br>
+                    <div class="w3-cyan w3-text-white w3-hide-small " style="font-size:60px">
+                        Pursue Your Dreams
+                        <!--
+                        <p><b>We had the best time playing at Venice Beach!</b></p>
+                        -->
+                    </div>
+
+                    <!--
+                    <p><b>We had the best time playing at Venice Beach!</b></p>
+                    -->
+                </div>
+
+
+            </div>
+
+            <!--
+            <div class="mySlides w3-display-container w3-center">
+              <img src="/graduates2.jpg" style="width:100%">
+              <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>New York</h3>
+                <p><b>The atmosphere in New York is lorem ipsum.</b></p>
+              </div>
+            </div>
+            <div class="mySlides w3-display-container w3-center">
+              <img src="graduates3.jpg" style="width:100%">
+              <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>Chicago</h3>
+                <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+              </div>
+            </div>
+            -->
+            <!-- The About Section -->
+            <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+                <h2 class="w3-wide">ABOUT</h2>
+                <p class="w3-opacity"><i>Your No. 1 Higher Education System</i></p>
+                <p class="w3-justify">Now students no need to browse on university websites one by one. We are here as a centralised platform to ease the process of
+                    choosing a suitable programmes for you.
+                    We have collaborated with a wide range of well known and high ranked universities across Malaysia. Thus we have lots variety of programmes to offer to you!</p>
+                <div class="mySlides w3-display-container w3-center">
+                    <div class="w3-row w3-padding-32">
+                        <div class="w3-third">
+                            <!--
+                            <p><b>The University of Nottingham</b></p>
+                            -->
+                            <img src="notty.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Help University</b></p>
+                            -->
+                            <img src="help.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Monash University</b></p>
+                            -->
+                            <img src="monash.png" class="w3-round" alt="Random Name" style="width:60%">
+                        </div>
+                    </div>
+                </div>
+                <div class="mySlides w3-display-container w3-center">
+                    <div class="w3-row w3-padding-32">
+                        <div class="w3-third">
+                            <!--
+                            <p><b>The University of Nottingham</b></p>
+                            -->
+                            <img src="oum.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Help University</b></p>
+                            -->
+                            <img src="um.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Monash University</b></p>
+                            -->
+                            <img src="uum.png" class="w3-round" alt="Random Name" style="height:30%;width:30%">
+                        </div>
+                    </div>
+                </div>
+                <div class="mySlides w3-display-container w3-center">
+                    <div class="w3-row w3-padding-32">
+                        <div class="w3-third">
+                            <!--
+                            <p><b>The University of Nottingham</b></p>
+                            -->
+                            <img src="uthm.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Help University</b></p>
+                            -->
+                            <img src="usm.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+                        </div>
+                        <div class="w3-third">
+                            <!--
+                          <p><b>Monash University</b></p>
+                            -->
+                            <img src="ytm.png" class="w3-round" alt="Random Name" style="width:60%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Tour Section -->
+            <div class="w3-cyan" id="tour">
+                <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+                    <h2 class="w3-wide w3-center">PROGRAMMES & DATELINES</h2>
+                    <p class="w3-opacity w3-center"><i>Remember to sign up first!</i></p><br>
+
+                    <ul class="w3-ul w3-border w3-white w3-text-grey">
+                        <li class="w3-padding">2019 May intake<span class="w3-tag w3-red w3-margin-left">Close soon</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2019 September intake<span class="w3-tag w3-red w3-margin-left">Open</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2020 January intake <span class="w3-tag w3-red w3-margin-left" >Open</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2020 May intake <span class="w3-tag w3-black w3-right w3-margin-right">Open soon</span></li>
+                    </ul>
+                    <br>
+                    <p class="w3-opacity w3-center w3-large">Featured Programmes</p><br>
+                    <div class="w3-row-padding w3-padding-2" style="">
+                        <div class="w3-third w3-margin-bottom">
+                            <!--
+                            <img src=".png" alt="New York" style="width:100%" class="w3-hover-opacity">
+                            -->
+                            <div class="w3-container w3-white">
+                                <p><b>Bachelor of Art</b><br>University of Nottingham</p>
+                                <p class="w3-opacity">Close Date: Fri 27 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display = 'block'">Apply</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom">
+                            <!--
+                            <img src=".jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+                            -->
+                            <div class="w3-container w3-white">
+                                <p><b>Bachelor of Business</b><br>Open University</p>
+                                <p class="w3-opacity">Close Date: Sat 28 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display = 'block'">Apply</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom">
+                            <!--
+                            <img src=".png" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                            -->
+                            <div class="w3-container w3-white">
+                                <p><b>Bachelor of Psychology</b><br>Help University</p>
+                                <p class="w3-opacity">Close Date: Sun 29 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display = 'block'">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Modal -->
+            <div id="ticketModal" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal w3-center w3-padding-32">
+                        <span onclick="document.getElementById('ticketModal').style.display = 'none'"
+                              class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+                        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+                    </header>
+                    <div class="w3-container">
+                        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+                        <input class="w3-input w3-border" type="text" placeholder="How many?">
+                        <p><label><i class="fa fa-user"></i> Send To</label></p>
+                        <input class="w3-input w3-border" type="text" placeholder="Enter email">
+                        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+                        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display = 'none'">Close <i class="fa fa-remove"></i></button>
+                        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Contact Section -->
+            <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+                <h2 class="w3-wide w3-center">CONTACT</h2>
+                <p class="w3-opacity w3-center"><i>Got inquiries? Drop a note!</i></p>
+                <div class="w3-row w3-padding-32">
+                    <div class="w3-col m6 w3-large w3-margin-bottom">
+                        <i class="fa fa-map-marker" style="width:30px"></i> Kuala Lumpur, 50100<br>
+                        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+                        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+                    </div>
+                    <div class="w3-col m6">
+                        <form action="/action_page.php" target="_blank">
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                                </div>
+                                <div class="w3-half">
+                                    <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                                </div>
+                            </div>
+                            <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                            <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Page Content -->
+        </div>
+
+        <!-- Image of location/map -->
+        <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
         <!-- Footer -->
-        <footer class="w3-container w3-padding-64 w3-center w3-opacity">
-            <div class="w3-xlarge w3-padding-32">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-snapchat w3-hover-opacity"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
-            </div>
-            <p style="color: white; font-size: 20px; ">Copyright by Sharifah & Khadijah</p>
+        <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+            <p class="w3-medium">Powered by <a href="layout3.html" target="_blank">HighEd</a></p>
         </footer>
 
         <script>
-        // Used to toggle the menu on small screens when clicking on the menu button
+
+            // Automatic Slideshow - change image every 4 seconds
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {
+                    myIndex = 1
+                }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 4000);
+            }
+
+            // Used to toggle the menu on small screens when clicking on the menu button
             function myFunction() {
                 var x = document.getElementById("navDemo");
                 if (x.className.indexOf("w3-show") == -1) {
                     x.className += " w3-show";
                 } else {
                     x.className = x.className.replace(" w3-show", "");
+                }
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            var modal = document.getElementById('ticketModal');
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
                 }
             }
         </script>
