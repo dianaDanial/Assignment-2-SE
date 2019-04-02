@@ -32,30 +32,27 @@
         return true;
       }</script>
 
-  <nav class="navbar navbar-expand-md bg-light navbar-light">
-      <img src="logo.png" alt="Logo" style="width:50px; height:85px">
-      <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
-      <a href="user.php" class="w3-bar-item w3-button w3-padding-large w3-white">Sign Up</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact Us</a>
-      <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Login</a>
-    </div>
+      <div class="w3-top">
+          <div class="w3-bar w3-black w3-card">
 
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="programmes.php" class="w3-bar-item w3-button w3-padding-large">Programmes</a>
-      <a href="contactUs.php" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
-    </div>
+              <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+              <a href="index.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+              <a href="index.php#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT</a>
+              <a href="index.php#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROGRAMMES</a>
+              <a href="index.php#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+              <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Login</a>
+              <div class="w3-dropdown-hover w3-hide-small">
+
+              </div>
+          </div>
+      </div>
+
   </div>
   <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
     <div class="card"  "center" style="width:auto;" >
       <br>
       <br>
-        <h1 class="text-center">User Details</h1>
+        <h1 class="text-center">Sign Up Applicants</h1>
         <form method="post" action="user.php">
             <?php include('errors.php'); ?>
           <div class="container mt-3">
