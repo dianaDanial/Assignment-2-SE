@@ -6,8 +6,8 @@ if(isset($_POST["username"]))
  for($count = 0; $count < count($_POST["username"]); $count++)
  {
   $query = "INSERT INTO uniAdmin
-  (username, password, name, email)
-  VALUES (:username, :password, :name, :email)
+  (username, password, name, email,university)
+  VALUES (:username, :password, :name, :email, :university)
   ";
   $statement = $connect->prepare($query);
   $statement->execute(
@@ -15,7 +15,8 @@ if(isset($_POST["username"]))
     ':username'  => $_POST["username"][$count],
     ':password' => $_POST["password"][$count],
     ':name'  => $_POST["name"][$count],
-    ':email'  => $_POST["email"][$count]
+    ':email'  => $_POST["email"][$count],
+    ':university'  => $_POST["university"][$count],
    )
   );
  }
