@@ -53,16 +53,17 @@ CREATE TABLE `uniAdmin` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `email` varchar(20) NOT NULL
+  `email` varchar(20) NOT NULL,
+  `university` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `UniAdmin'
 --
 
-INSERT INTO `uniAdmin` (`username`, `password`, `name`, `email`) VALUES
-('amber', '12345', 'Amber Gold','amber@gmail.com' ),
-('ben', 'ben', 'Benjamin Gardner', 'ben@gmail');
+INSERT INTO `uniAdmin` (`username`, `password`, `name`, `email`,`university`) VALUES
+('amber', '12345', 'Amber Gold','amber@gmail.com','University of Malaya' ),
+('ben', 'ben', 'Benjamin Gardner', 'ben@gmail','University of Malaya');
 
 -- --------------------------------------------------------
 
