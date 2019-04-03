@@ -53,7 +53,7 @@ if ($result_select_qualification = mysqli_query($db, $sql_select_qualification))
               <a href="index.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
               <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Maintain Qualification</a>
               <a href="registerUni.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Register University</a>
-							<a href="viewAdmin.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">View University Admin</a>
+							<a href="viewAdmin.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Manage University Admin</a>
               <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Logout</a>
               <div class="w3-dropdown-hover w3-hide-small">
 
