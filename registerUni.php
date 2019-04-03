@@ -25,27 +25,26 @@ include ('connection.php');
 
   <div class="w3-top">
     <body class="bg-info" >
-  <nav class="navbar navbar-expand-md bg-light navbar-light">
-      <img src="logo.png" alt="Logo" style="width:50px; height:85px">
-      <a class="navbar-brand" href="index.html"style="font-family: "Times New Roman", Times, serif;">HighEd</a>
-    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-      <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-      <a href="programmes.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Programmes</a>
-      <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Maintain Qualifications</a>
-      <a href="registerUni.php" class="w3-bar-item w3-button w3-padding-large w3-white">Register University</a>
-      <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Log Out</a>
-    </div>
+      <div class="w3-top">
 
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="programmes.php" class="w3-bar-item w3-button w3-padding-large">Programmes</a>
-      <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-padding-large">Maintain Qualifications</a>
-      <a href="logOut.php" class="w3-bar-item w3-button w3-padding-large">Log Out</a>
-    </div>
+          <div class="w3-bar w3-black w3-card">
+
+              <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+              <a href="index.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+              <a href="maintainQualifications.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Maintain Qualification</a>
+              <a href="registerUni.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Register University</a>
+							<a href="viewAdmin.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Manage University Admin</a>
+              <a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Logout</a>
+              <div class="w3-dropdown-hover w3-hide-small">
+
+              </div>
+
+								<h5 class="w3-padding-large w3-hide-small w3-right">Hi ,<?php echo $_SESSION['username']; ?> </h5>
+          </div>
+      </div>
+
   </div>
-  <div class="w3-container w3-light-grey w3-center" style="padding:80px 16px; "
+  <div class="w3-container w3-white w3-center" style="padding:80px 16px; "
     <div class="card"  "center" style="width:auto;" >
       <br>
       <br>
@@ -68,8 +67,8 @@ include ('connection.php');
   </div>
 </body>
   <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity">
-    <div class="w3-xlarge w3-padding-32">
+  <footer class="w3-container w3-padding-32 w3-center w3-black">
+    <div class="w3-large w3-padding-20">
       <i class="fa fa-facebook-official w3-hover-opacity"></i>
       <i class="fa fa-instagram w3-hover-opacity"></i>
       <i class="fa fa-snapchat w3-hover-opacity"></i>
@@ -79,3 +78,4 @@ include ('connection.php');
    </div>
    <p style="color: white; font-size: 20px; ">Copyright by Sharifah & Khadijah</p>
   </footer>
+  </html>
