@@ -10,6 +10,22 @@ if (isset($_POST['review_page'])){
   $user = mysqli_fetch_assoc($result);
 
 }
+$sql = "SELECT * FROM application";
+$result = mysqli_query($db, $sql);
+$resultCheck = mysqli_num_rows($result);
+
+$applicationID ="";
+$status = "";
+$applicantName = "";
+if (isset($_POST['submit_page'])){
+  $applicationID = mysqli_real_escape_string($db, $_POST['applicationID']);
+  $applicantName = mysqli_real_escape_string($db, $_POST['applicantName']);
+  $status = mysqli_real_escape_string($db, $_POST['applicationStatus']);
+  $query =  "UPDATE application SET status = '$status' WHERE applicationID = '$applicationID'";
+  mysqli_query($db, $query);
+
+  header('location: reviewApplicant.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,45 +67,39 @@ if (isset($_POST['review_page'])){
   <div class="w3-container w3-white w3-center" style="padding:80px 16px; "
   <div class="w3-content">
     <div class= "w3-center"style="width:auto;">
-      <br>
-      <br>
+      <input readonly class='invisible'class="form-control" id = "programmeID" name = "programmeID" value = "<?php echo $programmeID;?>">
       <h1 style="text-decoration: underline;">List Of Programme Available</h1>
       <br>
-      <?php if ($row_count_select_programme == 0) {
-          echo "<p>No programme have been created yet</p>";
-        } else {
-          echo "
-          <table class='table table-striped'>
-            <thead>
-              <tr>
-							  <th>Programme ID</th>
-                <th>Programme Name</th>
-                <th>Closing Date</th>
-                <th>Number of Application</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>";
-              for ($i = 1; $i <=$row_count_select_programme; $i++) {
-                echo "
-                  <tr>
-                  <form action='reviewProgramme.php' method='post'>
-									  <td>$programmeID_selected_programme[$i]</td>
-                    <td>$programmeName_selected_programme[$i]</td>
-                    <td>$closingDate_selected_programme[$i]</td>
-                    <td></td>
-                    <td>
-                          <button type='submit' class='btn btn-success' name='review_page'>Review Application</button>
-                      </form>
-                    </td>
-                  </tr>
-                ";
-              } echo "
-            </tbody>
-          </table>
-          ";
-        }
-        ?>
+      <div class="table-responsive">
+      <table style="width:100%" class='table table-striped'>
+  	  <tr>
+  		<th>Application ID</th>
+  		<th>Application Name</th>
+  		<th>Application Status</th>
+  		<th>Qualification Obtained</th>
+  		<th>Score</th>
+  	  </tr>
+
+  	  <tr>
+  	<?php
+  		  while($row = mysqli_fetch_assoc($result))
+  		  {
+  			echo "<tr><form action=reviewApplicant.php method=post>";
+  			echo "<td><input type=text name=applicationID readOnly value='".$row ['applicationID']."'></td>";
+  			echo "<td><input type=text name=applicantName readOnly value='".$row ['applicantName']."'></td>";
+        echo "<td><form action='reviewApplicant.php'  method='post'>
+  			<select class='form-control' id='applicationStatus' name='applicationStatus'>
+  			<option value='SUCCESSFUL'>SUCCESSFUL </option>
+  			<option value='UNSUCCESSFUL '>UNSUCCESSFUL  </option>
+  		  </select>
+  			<br><button type='submit' class='btn btn-danger' name='submit_page'>Save</button></td></form></td>";
+  			echo "<td><input type=text name=qualificationObtained readOnly value='".$row['qualificationObtained']."'></td>";
+  			echo "<td><input type=text name=score readOnly value='".$row['score']."'></td>";
+         }
+  		  ?>
+  	  </tr>
+  	</table>
+  </div>
     </div>
   </div>
 </div>
