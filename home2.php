@@ -1,124 +1,223 @@
 <?php
-
-include("connection.php");
-
-$username = $_SESSION['username'];
-$sql_select_university = "SELECT university FROM uniadmin WHERE username = '$username'";
-$result_university = mysqli_query($db, $sql_select_university);
-$row_select_university = mysqli_fetch_assoc($result_university);
-$university_selected_university = $row_select_university['university'];
-
-$sql_select_programme = "SELECT programmeName, closingDate, description FROM programme WHERE uniAdmin = '$username'";
-if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
-	$row_count_select_programme =mysqli_num_rows($result_select_programme);
-	if ($row_count_select_programme>0) {
-		$i = 1;
-		while($row_select_programme=mysqli_fetch_assoc($result_select_programme)) {
-			$programmeName_selected_programme[$i] = $row_select_programme['programmeName'];
-			$closingDate_selected_programme[$i] = $row_select_programme['closingDate'];
-      $description_selected_programme[$i] = $row_select_programme['description'];
-			$i++;
-		}
-	}
-} else{
-	$row_count_select_programme = 0;
+include 'dbconnect.php';
+include 'menu.php';
+session_start();
+$authenticate = $_SESSION["usertype"];
+if($authenticate !=2){
+    echo "<script> location.href='index.php'; </script>";
 }
 
+$sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+        $user = mysqli_fetch_array($result);
+
+        if ($user[6]!=0) {
+            $sqlu = "SELECT * FROM university WHERE iduniversity='$user[6]' LIMIT 1";
+            $resultu = mysqli_query($conn, $sqlu);
+            $uniname = mysqli_fetch_array($resultu);
+            
+        }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<title>Manage University Programme</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/x-icon" href="logo.ico">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <style>
-  body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-  .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-  .fa-anchor,.fa-coffee {font-size:200px}
-	h4 {
-  display: inline-block;
-}
-  </style>
 
-  <!-- Navbar -->
-	<body class="bg-info" >
-			<div class="w3-top">
-				<div class="w3-bar w3-black w3-card">
+<html>
+    <head>
+        <title>Manage Program </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="logo.ico">
+        <link rel="stylesheet" href="style1.css">
+        <link rel="stylesheet" href="style3.css">
+        <link rel="stylesheet" href="style4.css">
+        <link rel="stylesheet" href="mycss.css">
+        <script src="javascript.js"></script>
 
-					<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-					<a href="index.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-					<a href="home2.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Manage Programme</a>
-					<a href="reviewProgramme.php" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Review Applications</a>
-					<a href="logOut.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"  style="float:right">Logout</a>
-					<div class="w3-dropdown-hover w3-hide-small">
+    </head>
+    <body>
+        <div w3-include-html="menu.html"></div>
+<!--
+        <h1 class="w3-center " style="margin-top: 90px;margin-bottom:60px">Manage Qualification and University</h1>
+        <div class="tab" style="margin-left: 90px;margin-right:90px">
+            <button class="tablinks" onclick="openCity(event, 'qualification')" id="defaultOpen">Qualification</button>
+            <button class="tablinks" onclick="openCity(event, 'university')">University</button>
+        </div>-->
+        <?php
+        
+        //echo'<div id="qualification" class="tabcontent" style="margin-left: 90px;margin-right:90px">';
+        $sql = "SELECT * FROM program where iduniversity= '$user[6]'";
+        $result = mysqli_query($conn, $sql);
 
-					</div>
+        $per_page = 3;
+        $number = 0;
 
-						<h5 class="w3-padding-large w3-hide-small w3-right">Hi ,<?php echo $_SESSION['username']; ?> </h5>
-			</div>
-		</div>
+        if (mysqli_num_rows($result) > 0) {
+            $total_results = mysqli_num_rows($result);
+// ceil() returns the next highest integer value by rounding up value if necessary
+            $total_pages = ceil($total_results / $per_page);
 
-  <div class="w3-container w3-white" style="padding:80px 16px; ">
-		<h4 style="color:#A64CA6;"> Welcome <?php echo $_SESSION['username'];?>&nbsp</h4>
-		<h4 style="color:#A64CA6;">from <?php echo " $university_selected_university";?></h4>
-		<div class="w3-content">
-    <br>
-    <div class= "w3-center"style="width:auto;">
-      <br>
-      <br>
-      <h1 style="text-decoration: underline;">Manage University Programme</h1>
-      <br>
-        <?php if ($row_count_select_programme > 0) {
-        echo "
-        <table class='table table-striped'>
-          <thead>
-            <tr>
-              <th class='table-info'scope='col'>Programme Name</th>
-              <th class='table-info'scope='col'>Closing Date</th>
-              <th class='table-info'scope='col'>Description</th>
-            </tr>
-          </thead>
-          <tbody>";
-            for ($i = 1; $i <=$row_count_select_programme; $i++) {
-              echo "
-                <tr>
-                <form action='home2.php' method='post'>
-                  <td>$programmeName_selected_programme[$i]</td>
-                  <td>$closingDate_selected_programme[$i]</td>
-                  <td>$description_selected_programme[$i]</td>
-                  </form>
-                </tr>
-              ";
-            } echo "
-          </tbody>
-        </table>
-        ";
-      }
-      ?>
-      <br>
-      <a href="program.php" class="btn btn-warning btn-lg btn-block" type="button">New Programme</a>
-    </div>
-  </div>
-</div>
-</body>
-  <!-- Footer -->
-	<footer class="w3-container w3-padding-32 w3-center w3-black">
-		<div class="w3-large w3-padding-20">
-			<i class="fa fa-facebook-official w3-hover-opacity"></i>
-			<i class="fa fa-instagram w3-hover-opacity"></i>
-			<i class="fa fa-snapchat w3-hover-opacity"></i>
-			<i class="fa fa-pinterest-p w3-hover-opacity"></i>
-			<i class="fa fa-twitter w3-hover-opacity"></i>
-			<i class="fa fa-linkedin w3-hover-opacity"></i>
-	 </div>
-	 <p style="color: white; font-size: 20px; ">Copyright by Sharifah & Khadijah</p>
-	</footer>
+// check if the 'page' variable is set in the URL (ex: view-paginated.php?page=1)
+            if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+                $show_page = $_GET['page'];
+
+// make sure the $show_page value is valid
+                if ($show_page > 0 && $show_page <= $total_pages) {
+                    $start = ($show_page - 1) * $per_page;
+                    $end = $start + $per_page;
+                } else {
+// error - show first set of results
+                    $start = 0;
+                    $end = $per_page;
+                }
+            } else {
+// if page isn't set, show first set of results
+                $start = 0;
+                $end = $per_page;
+            }
+            echo '<div style="margin-left:100px;margin-right:100px">';
+            echo '<div style="margin-top: 90px;margin-bottom:40px"><h1>Manage Program @ '. $uniname[1] . '</h1></div>';
+            
+            echo "<p><b>View Page:</b> ";
+            for ($i = 1; $i <= $total_pages; $i++) {
+                if (isset($_GET['page']) && $_GET['page'] == $i) {
+                    echo $i . " ";
+                } else {
+                    echo "<a href='home2.php?page=$i'>$i</a> ";
+                }
+            }
+            echo "</p>";
+
+// display data in table
+            echo "<table border='4' cellpadding='10'>";
+            echo "<tr> "
+            . "<th>No</th> "
+            . "<th>Program Name</th> "
+            . "<th>Start Date</th> "
+            . "<th>End Date</th> "
+            . "<th>Description</th> "
+            . '<th><img src="pencil.png" alt="Edit" style="width:15px;height:15px;"></th>'
+            . '<th><img src="delete.png" alt="Delete" style="width:15px;height:15px;"></th>'
+            . "</tr>";
+
+// loop through results of database query, displaying them in the table
+            for ($i = $start; $i < $end; $i++) {
+// make sure that PHP doesn't try to show results that don't exist
+                if ($i == $total_results) {
+                    break;
+                }
+
+// find specific row
+                $result->data_seek($i);
+                $row = $result->fetch_row();
+                
+
+// echo out the contents of each row into a table
+                echo "<tr>";
+                echo '<td></td>';
+                echo '<td>' . $row[2] . '</td>';
+                echo '<td>' . date('d F Y', strtotime($row[3])) . '</td>';
+                echo '<td>' . date('d F Y', strtotime($row[4])) . '</td>';
+                echo '<td>' . $row[5] . '</td>';
+                echo '<td><a href="program.php?id=' . $row[0] . '">Edit</a></td>';
+                echo '<td><a href="delete.php?id=' . $row[0] . '">Delete</a></td>';
+                echo "</tr>";
+            }
+// close table>
+            echo "</table>";
+        } else {
+            echo "<div style='margin: 40px 20px 20px 20px'>No results to display!</div>";
+        }
+        echo '<br><a href="program.php">';
+        echo '<input type="submit" name="newP" value="New Program"><br>';
+        echo '</a>';
+        //echo '<br><a href="qualification.php">Add New Program</a>';
+        //  }
+        echo'</div>';
+/*
+        echo'<div id="university" class="tabcontent" style="margin-left: 90px;margin-right:90px">';
+
+        $sql2 = "SELECT * FROM university";
+        $result2 = mysqli_query($conn, $sql2);
+
+
+        if (mysqli_num_rows($result2) > 0) {
+            $total_results = mysqli_num_rows($result2);
+// ceil() returns the next highest integer value by rounding up value if necessary
+            $total_pages = ceil($total_results / $per_page);
+
+// check if the 'page' variable is set in the URL (ex: view-paginated.php?page=1)
+            if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+                $show_page = $_GET['page'];
+
+// make sure the $show_page value is valid
+                if ($show_page > 0 && $show_page <= $total_pages) {
+                    $start = ($show_page - 1) * $per_page;
+                    $end = $start + $per_page;
+                } else {
+// error - show first set of results
+                    $start = 0;
+                    $end = $per_page;
+                }
+            } else {
+// if page isn't set, show first set of results
+                $start = 0;
+                $end = $per_page;
+            }
+            echo '<h1>Manage University & Admin</h1>';
+            echo "<p><b>View Page:</b> ";
+            for ($i = 1; $i <= $total_pages; $i++) {
+                if (isset($_GET['page']) && $_GET['page'] == $i) {
+                    echo $i . " ";
+                } else {
+                    echo "<a href='test.php?page=$i'>$i</a> ";
+                }
+            }
+            echo "</p>";
+
+// display data in table
+            echo "<table border='4' cellpadding='10'>";
+            echo "<tr> "
+            . "<th>No</th> "
+            . "<th>University Name</th> "
+            . "<th>Admin</th>"
+            . '<th><img src="pencil.png" alt="Edit" style="width:15px;height:15px;"></th>'
+            . '<th><img src="delete.png" alt="Delete" style="width:15px;height:15px;"></th>'
+            . "</tr>";
+
+// loop through results of database query, displaying them in the table
+            for ($i = $start; $i < $end; $i++) {
+// make sure that PHP doesn't try to show results that don't exist
+                if ($i == $total_results) {
+                    break;
+                }
+
+// find specific row
+                $result2->data_seek($i);
+                $row = $result2->fetch_row();
+
+// echo out the contents of each row into a table
+                echo "<tr>";
+                echo '<td></td>';
+                echo '<td>' . $row[1] . '</td>';
+                echo '<td><a href="user.php?id=' . $row[0] . '">Admin</a></td>';
+                echo '<td><a href="university.php?id=' . $row[0] . '">Edit</a></td>';
+                echo '<td><a href="delete.php?id=' . $row[0] . '">Delete</a></td>';
+                echo "</tr>";
+            }
+// close table>
+            echo "</table>";
+        } else {
+            echo "No results to display!";
+        }
+        //  }
+        echo '<br><a href="university.php">Add New University</a>';
+        echo'</div>';*/
+        //echo'</div>';
+        mysqli_close($conn);
+        ?>
+
+        <script>
+            
+        </script>
+
+    </body>
 </html>
+
+
