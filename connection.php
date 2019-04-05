@@ -15,6 +15,7 @@ $maximumScore = "";
 $gradeList = "";
 $resultCalcDescription = "";
 $universityName = "";
+$university = "";
 $name ="";
 $description = "";
 $end = "";
@@ -29,6 +30,7 @@ if (isset($_POST['reg_uniAdmin'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $fullname = mysqli_real_escape_string($db, $_POST['name']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
+  $university = mysqli_real_escape_string($db, $_POST['university']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password']);
   $password_2 = mysqli_real_escape_string($db, $_POST['Confirmpassword']);
 
@@ -60,10 +62,11 @@ if (isset($_POST['reg_uniAdmin'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO uniAdmin (username, password, name, email)
-  			  VALUES('$username', '$password', '$name', '$email')";
+  	$query = "INSERT INTO uniAdmin (username, password, name, email,university)
+  			  VALUES('$username', '$password', '$name', '$email','$university')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
+    $_SESSION['university'] = $university;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: recordProgramme.php');
   }
