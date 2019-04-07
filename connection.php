@@ -258,9 +258,8 @@ if (isset($_POST['add_qualification'])){
   $maximumScore = mysqli_real_escape_string($db, $_POST['maximumScore']);
   $gradeList = mysqli_real_escape_string($db, $_POST['gradeList']);
   $resultCalcDescription = mysqli_real_escape_string($db, $_POST['resultCalcDescription']);
-  $sasAdmin = mysqli_real_escape_string($db, $_SESSION['username']);
-  $query =  "INSERT INTO qualification (qualificationName, minimumScore, maximumScore, gradeList,resultCalcDescription, SASadmin)
-        VALUES('$qualificationName', '$minimumScore', '$maximumScore', '$gradeList', '$resultCalcDescription', '$sasAdmin')";
+  $query =  "INSERT INTO qualification (qualificationName, minimumScore, maximumScore, gradeList,resultCalcDescription)
+        VALUES('$qualificationName', '$minimumScore', '$maximumScore', '$gradeList', '$resultCalcDescription')";
   mysqli_query($db, $query);
   header('location: maintainQualifications.php');
 }
