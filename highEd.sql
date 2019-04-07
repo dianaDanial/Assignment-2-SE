@@ -39,8 +39,6 @@ CREATE TABLE `SASadmin` (
 --
 
 INSERT INTO `SASadmin` (`username`, `password`, `name`, `email`) VALUES
-('teresa', '12345', 'Teresa Miller','teresa@gmail.com' ),
-('ariana', 'ariana', 'Ariana Grande','ariana@gmail.com' ),
 ('paul', '12345', 'Paul Frank', 'paul@gmail');
 
 -- --------------------------------------------------------
@@ -79,16 +77,17 @@ CREATE TABLE `applicant` (
   `IDtype` varchar(30) NOT NULL,
   `IDnumber` int(20) NOT NULL,
   `mobileNo` varchar(50) NOT NULL,
-  `dateOfBirth`date NOT NULL
+  `dateOfBirth`date NOT NULL,
+  `qualificationObtained`float(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `applicant`
 --
 
-INSERT INTO `applicant` (`username`, `password`, `name`, `email`, `IDtype`, `IDnumber`,`mobileNo`,`dateOfBirth`) VALUES
-('blair', 'blair', 'Blair Waldorf', 'blair@gmail.com', 'passport',311195851, '01912651188','1999-02-12'),
-('adam', 'adam', 'Ahmad Adam', 'adam@gmail.com', 'IC',981117081561, '0123334861','1998-11-17');
+INSERT INTO `applicant` (`username`, `password`, `name`, `email`, `IDtype`, `IDnumber`,`mobileNo`,`dateOfBirth`,`qualificationObtained`) VALUES
+('blair', 'blair', 'Blair Waldorf', 'blair@gmail.com', 'passport',311195851, '01912651188','1999-02-12',89.99),
+('adam', 'adam', 'Ahmad Adam', 'adam@gmail.com', 'IC',981117081561, '0123334861','1998-11-17',78.6);
 
 -- --------------------------------------------------------
 
@@ -102,17 +101,16 @@ CREATE TABLE `qualification` (
   `minimumScore` int(10) NOT NULL,
   `maximumScore` int(10) NOT NULL,
   `resultCalcDescription` varchar(100) NOT NULL,
-  `gradeList` varchar(300) NOT NULL,
-  `SASadmin` varchar(50) NOT NULL
+  `gradeList` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualification`
 --
 
-INSERT INTO `qualification` (`qualificationID`,`qualificationName`, `minimumScore`, `maximumScore`, `resultCalcDescription`,`gradeList`,`SASadmin`) VALUES
-(101, 'A-Levels', 0.0, 5.0, 'Average of best 3 Subjects','A - 5 points, B- 4 points, C - 3 points, D - 2 points, A - 1 points','paul'),
-(102, 'STPM', 0.0, 4.0, 'Average of best 3 Subjects','A (4.00), A- (3.67), B+ (3.33), B (3.00), B- (2.67), C+ (2.33), C (2.00), C- (1.67), D+ (1.33), D (1.00), F (0.00)','paul');
+INSERT INTO `qualification` (`qualificationID`,`qualificationName`, `minimumScore`, `maximumScore`, `resultCalcDescription`,`gradeList`) VALUES
+(101, 'A-Levels', 0.0, 5.0, 'Average of best 3 Subjects','A - 5 points, B- 4 points, C - 3 points, D - 2 points, A - 1 points'),
+(102, 'STPM', 0.0, 4.0, 'Average of best 3 Subjects','A (4.00), A- (3.67), B+ (3.33), B (3.00), B- (2.67), C+ (2.33), C (2.00), C- (1.67), D+ (1.33), D (1.00), F (0.00)');
 
 -- --------------------------------------------------------
 
@@ -180,16 +178,17 @@ INSERT INTO `application` (`applicationID`, `applicationDate`,`status`) VALUES
 --
 
 CREATE TABLE `qualificationObtained` (
-  `overallScore` int(20) NOT NULL
+  `overallScore` float(30) NOT NULL,
+  `applicant` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualificationObtained`
 --
 
-INSERT INTO `qualificationObtained` (`overallScore`) VALUES
-(4.5),
-(3.67);
+INSERT INTO `qualificationObtained` (`overallScore`,`applicant`) VALUES
+(4.5,'adam'),
+(3.67,'blair');
 
 -- --------------------------------------------------------
 --
@@ -229,15 +228,23 @@ ALTER TABLE `SASadmin`
 --
 ALTER TABLE `applicant`
   ADD PRIMARY KEY (`username`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `qualificationObtained` (`qualificationObtained`);
+
+--
+-- Indexes for table `qualificationObtained`
+--
+ALTER TABLE `qualificationObtained`
+  ADD PRIMARY KEY (`overallScore`),
+  ADD UNIQUE KEY `overallScore` (`overallScore`),
+  ADD KEY `applicant` (`applicant`);
 
 --
 -- Indexes for table `qualification`
 --
 ALTER TABLE `qualification`
   ADD PRIMARY KEY (`qualificationID`),
-  ADD UNIQUE KEY `qualificationID` (`qualificationID`),
-  ADD KEY `SASadmin` (`SASadmin`);
+  ADD UNIQUE KEY `qualificationID` (`qualificationID`);
 
 --
 -- Indexes for table `university`
@@ -293,16 +300,10 @@ ALTER TABLE `programme`
 --
 
 --
--- Constraints for table `qualification`
+-- Constraints for table `programme`
 --
-ALTER TABLE `qualification`
-  ADD CONSTRAINT `qualification_ibfk_1` FOREIGN KEY (`SASadmin`) REFERENCES `SASadmin` (`username`);
-
-  --
-  -- Constraints for table `programme`
-  --
-  ALTER TABLE `programme`
-    ADD CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
+ALTER TABLE `programme`
+  ADD CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`uniAdmin`) REFERENCES `uniAdmin` (`username`);
 
 COMMIT;
 
