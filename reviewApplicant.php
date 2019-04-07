@@ -16,10 +16,8 @@ $resultCheck = mysqli_num_rows($result);
 
 $applicationID ="";
 $status = "";
-$applicantName = "";
 if (isset($_POST['submit_page'])){
   $applicationID = mysqli_real_escape_string($db, $_POST['applicationID']);
-  $applicantName = mysqli_real_escape_string($db, $_POST['applicantName']);
   $status = mysqli_real_escape_string($db, $_POST['applicationStatus']);
   $query =  "UPDATE application SET status = '$status' WHERE applicationID = '$applicationID'";
   mysqli_query($db, $query);
@@ -74,7 +72,6 @@ if (isset($_POST['submit_page'])){
       <table style="width:100%" class='table table-striped'>
   	  <tr>
   		<th>Application ID</th>
-  		<th>Application Name</th>
   		<th>Application Status</th>
   		<th>Qualification Obtained</th>
   		<th>Score</th>
@@ -86,7 +83,6 @@ if (isset($_POST['submit_page'])){
   		  {
   			echo "<tr><form action=reviewApplicant.php method=post>";
   			echo "<td><input type=text name=applicationID readOnly value='".$row ['applicationID']."'></td>";
-  			echo "<td><input type=text name=applicantName readOnly value='".$row ['applicantName']."'></td>";
         echo "<td><form action='reviewApplicant.php'  method='post'>
   			<select class='form-control' id='applicationStatus' name='applicationStatus'>
   			<option value='SUCCESSFUL'>SUCCESSFUL </option>
