@@ -4,7 +4,7 @@ include("connection.php");
 
 $username = $_SESSION['username'];
 
-$sql_select_qualification = "SELECT qualificationName, maximumScore, qualificationID FROM qualification WHERE SASadmin = '$username'";
+$sql_select_qualification = "SELECT qualificationName, maximumScore, qualificationID FROM qualification";
 if ($result_select_qualification = mysqli_query($db, $sql_select_qualification)) {
 	$row_count_select_qualification =mysqli_num_rows($result_select_qualification);
 	if ($row_count_select_qualification>0) {
