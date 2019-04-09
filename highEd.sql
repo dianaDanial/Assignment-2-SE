@@ -142,16 +142,17 @@ CREATE TABLE `programme` (
   `programmeName` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   `closingDate` date NOT NULL,
-  `uniAdmin` varchar(50) NOT NULL
+  `uniAdmin` varchar(50) NOT NULL,
+  `university` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `programme`
 --
 
-INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closingDate`,`UniAdmin` ) VALUES
-(001, 'Account', ' Accounting is an important part of businesses as it is a means of determining the financial stability of a business.','2019-02-16','amber' ),
-(002, 'Business', ' Studying for a business management degree allows you to develop a broad understanding of business organisations.','2019-02-17','amber' );
+INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closingDate`,`UniAdmin`,`university`) VALUES
+(001, 'Account', ' Accounting is an important part of businesses as it is a means of determining the financial stability of a business.','2019-02-16','amber','University of Malaya' ),
+(002, 'Business', ' Studying for a business management degree allows you to develop a broad understanding of business organisations.','2019-02-17','amber','University of Malaya' );
 -- --------------------------------------------------------
 
 --
