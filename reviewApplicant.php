@@ -10,7 +10,7 @@ if (isset($_POST['review_page'])){
   $user = mysqli_fetch_assoc($result);
 
 }
-$sql = "SELECT * FROM application";
+$sql = "SELECT * FROM application WHERE status='New'";
 $result = mysqli_query($db, $sql);
 $resultCheck = mysqli_num_rows($result);
 
@@ -27,7 +27,7 @@ if (isset($_POST['submit_page'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<title>List of Applications</title>
+<title>List of New Applications</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="logo.ico">
@@ -66,15 +66,13 @@ if (isset($_POST['submit_page'])){
   <div class="w3-content">
     <div class= "w3-center"style="width:auto;">
       <input readonly class='invisible'class="form-control" id = "programmeID" name = "programmeID" value = "<?php echo $programmeID;?>">
-      <h1 style="text-decoration: underline;">List Of Programme Available</h1>
+      <h1 style="text-decoration: underline;">List Of New Applicant</h1>
       <br>
       <div class="table-responsive">
       <table style="width:100%" class='table table-striped'>
   	  <tr>
   		<th>Application ID</th>
   		<th>Application Status</th>
-  		<th>Qualification Obtained</th>
-  		<th>Score</th>
   	  </tr>
 
   	  <tr>
@@ -89,8 +87,6 @@ if (isset($_POST['submit_page'])){
   			<option value='UNSUCCESSFUL '>UNSUCCESSFUL  </option>
   		  </select>
   			<br><button type='submit' class='btn btn-danger' name='submit_page'>Save</button></td></form></td>";
-  			echo "<td><input type=text name=qualificationObtained readOnly value='".$row['qualificationObtained']."'></td>";
-  			echo "<td><input type=text name=score readOnly value='".$row['score']."'></td>";
          }
   		  ?>
   	  </tr>
