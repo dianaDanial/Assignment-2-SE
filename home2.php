@@ -15,7 +15,7 @@ $sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
             $sqlu = "SELECT * FROM university WHERE iduniversity='$user[6]' LIMIT 1";
             $resultu = mysqli_query($conn, $sqlu);
             $uniname = mysqli_fetch_array($resultu);
-            
+
         }
 ?>
 
@@ -40,7 +40,7 @@ $sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
             <button class="tablinks" onclick="openCity(event, 'university')">University</button>
         </div>-->
         <?php
-        
+
         //echo'<div id="qualification" class="tabcontent" style="margin-left: 90px;margin-right:90px">';
         $sql = "SELECT * FROM program where iduniversity= '$user[6]'";
         $result = mysqli_query($conn, $sql);
@@ -73,7 +73,7 @@ $sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
             }
             echo '<div style="margin-left:100px;margin-right:100px">';
             echo '<div style="margin-top: 90px;margin-bottom:40px"><h1>Manage Program @ '. $uniname[1] . '</h1></div>';
-            
+
             echo "<p><b>View Page:</b> ";
             for ($i = 1; $i <= $total_pages; $i++) {
                 if (isset($_GET['page']) && $_GET['page'] == $i) {
@@ -106,7 +106,7 @@ $sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
 // find specific row
                 $result->data_seek($i);
                 $row = $result->fetch_row();
-                
+
 
 // echo out the contents of each row into a table
                 echo "<tr>";
@@ -214,10 +214,8 @@ $sql = "SELECT * FROM user WHERE iduser='$authenticate' LIMIT 1";
         ?>
 
         <script>
-            
+
         </script>
 
     </body>
 </html>
-
-
