@@ -179,6 +179,7 @@ INSERT INTO `application` (`applicationID`, `applicationDate`,`status`) VALUES
 --
 
 CREATE TABLE `qualificationObtained` (
+  `qualification` varchar(50) NOT NULL,
   `overallScore` float(30) NOT NULL,
   `applicant` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -187,9 +188,9 @@ CREATE TABLE `qualificationObtained` (
 -- Dumping data for table `qualificationObtained`
 --
 
-INSERT INTO `qualificationObtained` (`overallScore`,`applicant`) VALUES
-(4.5,'adam'),
-(3.67,'blair');
+INSERT INTO `qualificationObtained` (`qualification`,`overallScore`,`applicant`) VALUES
+('A-Levels',4.5,'adam'),
+('A-Levels',3.67,'blair');
 
 -- --------------------------------------------------------
 --
@@ -197,6 +198,7 @@ INSERT INTO `qualificationObtained` (`overallScore`,`applicant`) VALUES
 --
 
 CREATE TABLE `result` (
+  `applicant`varchar(50) NOT NULL,
   `subjectName`varchar(50) NOT NULL,
   `grade` varchar(20) NOT NULL,
   `score`int(20) NOT NULL
@@ -206,8 +208,8 @@ CREATE TABLE `result` (
 -- Dumping data for table `result`
 --
 
-INSERT INTO `result` (`subjectName`,`grade`,`score`) VALUES
-('Chemistry', 'B+', 76.5);
+INSERT INTO `result` (`applicant`,`subjectName`,`grade`,`score`) VALUES
+('adam','Chemistry', 'B+', 76.5);
 
 -- --------------------------------------------------------
 --
