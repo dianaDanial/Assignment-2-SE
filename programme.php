@@ -60,7 +60,7 @@ if (isset($_POST['publish'])){
      <h1 style="text-decoration: underline;">Set Up New Programme</h1>
      <br>
 
-     <form action="program.php" method="post">
+     <form action="programme.php" method="post">
        <div class="input-group mb-3">
        <div class="input-group-prepend">
          <span class="input-group-text">University: </span>
