@@ -17,7 +17,7 @@ include 'menu.php';
     </head>
     <body>
         <h1 class="w3-center " style="margin-top: 90px;margin-bottom:60px">Manage Qualification</h1>
-        
+
             <?php
 
             function renderForm($name = '', $startdate = '', $enddate = '', $desc = '', $error = '', $id = '') {
@@ -65,7 +65,7 @@ include 'menu.php';
                                 <td>Description </td>
                                 <td>: <input type="text" name="desc" value="<?php echo $desc; ?>"/></td>
                             </tr>
-                            
+
                             <tr>
                                 <td></td>
                                 <td><input type="submit" style="float:right" name="submit" value="Submit" /></td>
