@@ -207,7 +207,7 @@ session_start();
                 </div>
             </div>
 
-            <!-- Ticket Modal -->
+          <!--   Ticket Modal -->
             <div id="ticketModal" class="w3-modal">
                 <div class="w3-modal-content w3-animate-top w3-card-4">
                     <header class="w3-container w3-teal w3-center w3-padding-32">
@@ -226,6 +226,7 @@ session_start();
                     </div>
                 </div>
             </div>
+
 
             <!-- The Contact Section -->
             <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
