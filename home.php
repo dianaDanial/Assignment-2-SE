@@ -10,6 +10,7 @@ session_start();
  */
 
 //include 'menu.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,12 +52,12 @@ session_start();
                     <div class="w3-cyan w3-text-white w3-hide-small " style="font-size:60px">
                         Pursue Your Dreams
                         <!--
-                        <p><b>We had the best time playing at Venice Beach!</b></p>   
+                        <p><b>We had the best time playing at Venice Beach!</b></p>
                         -->
-                    </div> 
+                    </div>
 
                     <!--
-                    <p><b>We had the best time playing at Venice Beach!</b></p>   
+                    <p><b>We had the best time playing at Venice Beach!</b></p>
                     -->
                 </div>
 
@@ -68,14 +69,14 @@ session_start();
               <img src="/graduates2.jpg" style="width:100%">
               <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
                 <h3>New York</h3>
-                <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
+                <p><b>The atmosphere in New York is lorem ipsum.</b></p>
               </div>
             </div>
             <div class="mySlides w3-display-container w3-center">
               <img src="graduates3.jpg" style="width:100%">
               <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
                 <h3>Chicago</h3>
-                <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
+                <p><b>Thank you, Chicago - A night we won't forget.</b></p>
               </div>
             </div>
             -->
@@ -83,7 +84,7 @@ session_start();
             <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
                 <h2 class="w3-wide">ABOUT</h2>
                 <p class="w3-opacity"><i>Your No. 1 Higher Education System</i></p>
-                <p class="w3-justify">Now students no need to browse on university websites one by one. We are here as a centralised platform to ease the process of 
+                <p class="w3-justify">Now students no need to browse on university websites one by one. We are here as a centralised platform to ease the process of
                     choosing a suitable programmes for you.
                     We have collaborated with a wide range of well known and high ranked universities across Malaysia. Thus we have lots variety of programmes to offer to you!</p>
                 <div class="mySlides w3-display-container w3-center">
@@ -161,9 +162,9 @@ session_start();
                     <p class="w3-opacity w3-center"><i>Remember to sign up first!</i></p><br>
 
                     <ul class="w3-ul w3-border w3-white w3-text-grey">
-                        <li class="w3-padding">2019 May intake<span class="w3-tag w3-red w3-margin-left">Close soon</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
-                        <li class="w3-padding">2019 September intake<span class="w3-tag w3-red w3-margin-left">Open</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
-                        <li class="w3-padding">2020 January intake <span class="w3-tag w3-red w3-margin-left" >Open</span><a href="" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2019 May intake<span class="w3-tag w3-red w3-margin-left">Close soon</span><a href="#" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2019 September intake<span class="w3-tag w3-red w3-margin-left">Open</span><a href="#" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
+                        <li class="w3-padding">2020 January intake <span class="w3-tag w3-red w3-margin-left" >Open</span><a href="#" class="w3-badge w3-black w3-right w3-margin-right">></a></li>
                         <li class="w3-padding">2020 May intake <span class="w3-tag w3-black w3-right w3-margin-right">Open soon</span></li>
                     </ul>
                     <br>
@@ -209,8 +210,8 @@ session_start();
             <!-- Ticket Modal -->
             <div id="ticketModal" class="w3-modal">
                 <div class="w3-modal-content w3-animate-top w3-card-4">
-                    <header class="w3-container w3-teal w3-center w3-padding-32"> 
-                        <span onclick="document.getElementById('ticketModal').style.display = 'none'" 
+                    <header class="w3-container w3-teal w3-center w3-padding-32">
+                        <span onclick="document.getElementById('ticketModal').style.display = 'none'"
                               class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
                         <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
                     </header>
