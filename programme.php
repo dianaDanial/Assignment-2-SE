@@ -1,5 +1,22 @@
 <?php
 include ('connection.php');
+$username = $_SESSION['username'];
+$sql_select_university = "SELECT university FROM uniadmin WHERE username = '$username'";
+$result_university = mysqli_query($db, $sql_select_university);
+$row_select_university = mysqli_fetch_assoc($result_university);
+$university_selected_university = $row_select_university['university'];
+
+if (isset($_POST['publish'])){
+  $name = mysqli_real_escape_string($db, $_POST['programmeName']);
+  $description = mysqli_real_escape_string($db, $_POST['description']);
+  $end = mysqli_real_escape_string($db, $_POST['end']);
+  $uniAdmin = mysqli_real_escape_string($db, $_SESSION['username']);
+  $query =  "INSERT INTO programme(programmeName,description,closingDate, uniAdmin, university)
+        VALUES('$name','$description','$end','$uniAdmin','$university_selected_university')";
+  mysqli_query($db, $query);
+  header('location: home2.php');
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +59,14 @@ include ('connection.php');
      <br>
      <h1 style="text-decoration: underline;">Set Up New Programme</h1>
      <br>
+
      <form action="program.php" method="post">
+       <div class="input-group mb-3">
+       <div class="input-group-prepend">
+         <span class="input-group-text">University: </span>
+       </div>
+       <input readonly class="form-control" id = "university" name = "university" value = "<?php echo " $university_selected_university";?>">
+     </div>
        <div class="input-group mb-3">
          <div class="input-group-prepend">
            <span class="input-group-text">Programme Name: </span>
