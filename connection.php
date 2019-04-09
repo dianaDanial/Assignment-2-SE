@@ -220,7 +220,7 @@ if (isset($_POST['login_uniAdmin'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: home2.php');
+  	  header('location: manageProgramme.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
