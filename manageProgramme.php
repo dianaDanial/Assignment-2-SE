@@ -89,7 +89,7 @@ if ($result_select_programme = mysqli_query($db, $sql_select_programme)) {
             for ($i = 1; $i <=$row_count_select_programme; $i++) {
               echo "
                 <tr>
-                <form action='home2.php' method='post'>
+                <form action='manageProgramme.php' method='post'>
                   <td>$programmeName_selected_programme[$i]</td>
                   <td>$closingDate_selected_programme[$i]</td>
                   <td>$description_selected_programme[$i]</td>
