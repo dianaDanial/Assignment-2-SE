@@ -162,6 +162,7 @@ INSERT INTO `programme` (`programmeID`, `programmeName`, `description`, `closing
 CREATE TABLE `application` (
   `applicationID` int(20) NOT NULL,
   `applicationDate` date NOT NULL,
+  `applicant` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -169,9 +170,9 @@ CREATE TABLE `application` (
 -- Dumping data for table `application`
 --
 
-INSERT INTO `application` (`applicationID`, `applicationDate`,`status`) VALUES
-(1001,'2019-01-08','Pending'),
-(1002,'2019-01-10','Pending');
+INSERT INTO `application` (`applicationID`, `applicationDate`,`applicant`,`status`) VALUES
+(1001,'2019-01-08','blair','Pending'),
+(1002,'2019-01-10','blair','Pending');
 
 -- --------------------------------------------------------
 --
@@ -181,7 +182,7 @@ INSERT INTO `application` (`applicationID`, `applicationDate`,`status`) VALUES
 CREATE TABLE `qualificationObtained` (
   `qualification` varchar(50) NOT NULL,
   `overallScore` float(30) NOT NULL,
-  `applicant` varchar(30) NOT NULL
+  `applicant` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
