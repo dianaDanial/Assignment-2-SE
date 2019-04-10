@@ -6,7 +6,7 @@ if(isset($_SESSION["username"]))
  for($count = 0; $count < count($_POST["username"]); $count++)
  {
   $query = "INSERT INTO result
-  (applicant,subjectName, grade, score)
+  (subjectName, grade, score)
   VALUES ('$_SESSION["username"]',:subjectName, :grade, :score)
   ";
   $statement = $connect->prepare($query);
