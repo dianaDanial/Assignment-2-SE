@@ -98,7 +98,7 @@ display: inline-block;
     //  echo " uname".$uname;
 
 
-      $sql = "INSERT INTO application (applicationDate, status) VALUES ('$date', 'New')";
+      $sql = "INSERT INTO application (applicationDate, status, applicant) VALUES ('$date', 'New',$username)";
 
       $set=mysqli_query($db,$sql);
        if ($set === TRUE) {
